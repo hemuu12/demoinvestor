@@ -10,7 +10,7 @@ const Login = ({ setAuth }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://demoinvestorbackend.vercel.app/api/auth/login', { email, password });
+            const res = await axios.post('https://demoinvestorbackend.onrender.com/api/auth/login', { email, password });
             localStorage.setItem('token', res?.data.token);
             localStorage.setItem('user', JSON.stringify(res?.data.user));
             setAuth(true);
