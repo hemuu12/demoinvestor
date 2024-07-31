@@ -1,0 +1,45 @@
+/* ProfileList.css */
+
+.profile-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.profile-card .blurred-content {
+    filter: blur(5px);
+    transition: filter 0.3s;
+}
+
+.profile-card .unlock-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.profile-card .unlock-button:hover {
+    background-color: #0056b3;
+}
