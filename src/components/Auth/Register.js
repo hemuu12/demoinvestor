@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             await axios.post('https://demoinvestorbackend.onrender.com/api/auth/register', { username, email, password });
             alert('Registration successful');
+            navigate('/login');
         } catch (error) {
             console.error(error.response.data.message);
         }
