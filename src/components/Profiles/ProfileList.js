@@ -9,7 +9,7 @@ const ProfileList = () => {
     useEffect(() => {
         const fetchProfiles = async () => {
             const token = localStorage.getItem('token');
-            const res = await axios.get('https://demoinvestorbackend.vercel.app/api/profiles', {
+            const res = await axios.get('https://demoinvestorbackend.onrender.com/api/profiles', {
                 headers: { 'x-auth-token': token }
             });
             setProfiles(res.data);
@@ -23,7 +23,7 @@ const ProfileList = () => {
             console.log(user._id)
             try {
                 // First API call to fetch tokens
-                const tokenRes = await axios.get(`https://demoinvestorbackend.vercel.app/api/tokens/${user._id}`, {
+                const tokenRes = await axios.get(`https://demoinvestorbackend.onrender.com/api/tokens/${user._id}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setTokens(tokenRes.data.tokens);

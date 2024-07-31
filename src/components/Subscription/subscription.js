@@ -15,7 +15,7 @@ const Subscription = () => {
             const token = localStorage.getItem('token');
             const user = JSON.parse(localStorage.getItem('user'));
             try {
-                const tokenRes = await axios.get(`https://demoinvestorbackend.vercel.app/api/tokens/${user._id}`, {
+                const tokenRes = await axios.get(`https://demoinvestorbackend.onrender.com/api/tokens/${user._id}`, {
                     headers: { 'x-auth-token': token }
                 });
             setTokens(tokenRes.data.tokens);
@@ -30,7 +30,7 @@ const Subscription = () => {
         const token = localStorage.getItem('token');
         const user = JSON.parse(localStorage.getItem('user'));
         try {
-            const response = await axios.post('https://demoinvestorbackend.vercel.app/api/payment/purchase', { price }, {
+            const response = await axios.post('https://demoinvestorbackend.onrender.com/api/payment/purchase', { price }, {
                 headers: { 'x-auth-token': token }
             });
             if (response.status === 200) {
@@ -39,7 +39,7 @@ const Subscription = () => {
             alert('Subscription successful! You have purchased ' + tokens + ' tokens.');
         } catch (error) {
             console.error('Error during payment:', error);
-            const tokenRes = await axios.get(`https://demoinvestorbackend.vercel.app/api/tokens/${user._id}`, {
+            const tokenRes = await axios.get(`https://demoinvestorbackend.onrender.com/api/tokens/${user._id}`, {
                 headers: { 'x-auth-token': token }
             });
         setTokens(tokenRes.data.tokens);

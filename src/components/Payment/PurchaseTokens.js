@@ -7,7 +7,7 @@ const PurchaseTokens = () => {
     const handlePurchase = async () => {
         const token = localStorage.getItem('token');
         try {
-            const res = await axios.post('/api/payment/purchase', { phone }, {
+            const res = await axios.post('https://demoinvestorbackend.onrender.com/api/payment/purchase', { phone }, {
                 headers: { 'x-auth-token': token }
             });
             window.location.href = res.data.paymentResponse.redirectUrl;

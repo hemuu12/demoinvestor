@@ -13,16 +13,15 @@ const ProfileDetails = ({ match }) => {
         const fetchTokensAndProfile = async () => {
             const token = localStorage.getItem('token');
             const user = JSON.parse(localStorage.getItem('user'));
-            console.log(user._id)
             try {
                 // First API call to fetch tokens
-                const tokenRes = await axios.get(`http://localhost:5000/api/tokens/${user._id}`, {
+                const tokenRes = await axios.get(`https://demoinvestorbackend.onrender.com/api/tokens/${user._id}`, {
                     headers: { 'x-auth-token': token }
                 });
-                setTokens(tokenRes.data.tokens);
-
+                setTokens(tokenRes?.data.tokens);
+                    console.log(tokens,"111111111111111",params._id)
                 // Second API call to access profile
-                const profileRes = await axios.post(`http://localhost:5000/api/profiles/access/${params.id}`, {tokens},  {
+                const profileRes = await axios.post(`https://demoinvestorbackend.onrender.com/api/profiles/access/${params.id}`, {tokens:tokenRes?.data.tokens},  {
                     headers: { 'x-auth-token': token }
                 });
                 setProfile(profileRes.data.details);
@@ -32,7 +31,7 @@ const ProfileDetails = ({ match }) => {
             }
         };
         fetchTokensAndProfile();
-    }, [params.id]);
+    }, [params.id ,tokens]);
 
     if (error) return <div>{error}</div>;
     if (!profile) return <div>Loading...</div>;
